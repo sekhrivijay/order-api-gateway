@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: demo
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://sekhrivijay@bitbucket.org/sekhrivijay/order-api-gateway.git
+          force-pull: true
+          search-paths: /src/main/resources
