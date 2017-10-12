@@ -1,7 +1,7 @@
 package com.services.micro.gateway.filter.order;
 
 import com.google.gson.Gson;
-import com.groupon.request.ReservationRequest;
+import com.groupon.generated.request.ReservationRequest;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.services.micro.gateway.order.GrouponOrderService;
@@ -17,8 +17,8 @@ import java.io.BufferedReader;
 import static com.netflix.zuul.context.RequestContext.getCurrentContext;
 
 @Component
-public class OrderApiFilter extends ZuulFilter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderApiFilter.class);
+public class GrouponOrderApiFilter extends ZuulFilter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GrouponOrderApiFilter.class);
 
     private GrouponOrderService grouponOrderService;
 
@@ -58,7 +58,6 @@ public class OrderApiFilter extends ZuulFilter {
             RequestContext context = getCurrentContext();
             HttpServletResponse servletResponse = context.getResponse();
             servletResponse.addHeader("Content-Type", "application/json; charset=utf-8");
-            grouponOrderService.reserve(reservationRequest);
             context.setResponseBody(gson.toJson(grouponOrderService.reserve(reservationRequest)));
             context.setSendZuulResponse(false);
         } catch (Exception e) {

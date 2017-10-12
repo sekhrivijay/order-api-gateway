@@ -1,9 +1,9 @@
 package com.services.micro.gateway.order.impl;
 
-import com.groupon.request.ReservationRequest;
-import com.groupon.response.Data;
-import com.groupon.response.Product;
-import com.groupon.response.ReservationResponse;
+import com.groupon.generated.request.ReservationRequest;
+import com.groupon.generated.response.Data;
+import com.groupon.generated.response.Product;
+import com.groupon.generated.response.ReservationResponse;
 import com.services.micro.gateway.order.GrouponOrderService;
 import com.services.micro.gateway.order.bl.OrderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;

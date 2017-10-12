@@ -1,7 +1,7 @@
 package com.services.micro.gateway.resource;
 
-import com.groupon.request.ReservationRequest;
-import com.groupon.response.ReservationResponse;
+import com.groupon.generated.request.ReservationRequest;
+import com.groupon.generated.response.ReservationResponse;
 import com.services.micro.commons.logging.annotation.LogExecutionTime;
 import com.services.micro.gateway.order.GrouponOrderService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -65,11 +65,11 @@ service:
     prometheus:
       enabled: true
   git:
-    enabled: false
+    enabled: true
   vip:
-    enabled: false
+    enabled: true
   swagger:
-    enabled: false
+    enabled: true
   logging:
     enabled: true
 
