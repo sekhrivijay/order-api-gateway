@@ -11,10 +11,10 @@ import org.springframework.ws.transport.http.HttpUrlConnection;
 @Component
 public class OrderSoapClient {
 
-    @Value("${client.auth.header.user-name:provide_test}")
+    @Value("${client.auth.header.user-name}")
     private String userName;
 
-    @Value("${client.auth.header.password:provide_test}")
+    @Value("${client.auth.header.password}")
     private String password;
 
     @Value("${client.default-uri}")
