@@ -34,10 +34,6 @@ spring:
     base-url: http://localhost:8680/
     flush-interval: 15
     enabled: false
-#  data:
-#    mongodb:
-#      repositories:
-#        enabled: false
 
 zuul:
   routes:
@@ -45,11 +41,21 @@ zuul:
       path: /foos/**
       url: http://localhost:8080/demo/test
 
+client:
+  default-uri: https://partner-qa02.ftdi.com/partners/FTDOrderService
+  ssl:
+    trust-store: classpath:jks/client-truststore.jks
+    trust-store-password: client-truststore-p455w0rd
+  auth:
+    header:
+      user-name: provide_test
+      password: provide_test
+
 
 logging:
   level:
     ROOT: INFO
-    com.amazonaws: DEBUG
+    org.springframework.ws.client.MessageTracing: TRACE
 
 
 service:
@@ -66,6 +72,9 @@ service:
     enabled: false
   logging:
     enabled: true
+
+
+
 
 
 memcached:

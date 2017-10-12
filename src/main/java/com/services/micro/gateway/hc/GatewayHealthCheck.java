@@ -5,7 +5,7 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyHealthCheck implements HealthIndicator {
+public class GatewayHealthCheck implements HealthIndicator {
 
 
 

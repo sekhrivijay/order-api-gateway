@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>order-api-gateway </name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project for Spring Boot Gateway </description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -62,6 +62,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-support</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>io.sixhours</groupId>
             <artifactId>memcached-spring-boot-starter</artifactId>
@@ -126,6 +139,27 @@
                 <version>2.2.1</version>
                 <configuration>
                     <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.13.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaLanguage>WSDL</schemaLanguage>
+                    <wsdl>true</wsdl>
+                    <xmlschema>false</xmlschema>
+                    <generatePackage>com.ftd.pi.ic.ftdpartners.webservices</generatePackage>
+                    <schemaIncludes>
+                        <include>apollo.wsdl</include>
+                    </schemaIncludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -207,8 +241,8 @@
                         <configuration>
                             <classifier>client</classifier>
                             <includes>
-                                <include>**/demo/api/**</include>
-                                <include>**/demo/config/**</include>
+                                <include>**/gateway/api/**</include>
+                                <include>**/gateway/config/**</include>
                             </includes>
                         </configuration>
                     </execution>
