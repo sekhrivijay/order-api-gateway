@@ -145,15 +145,6 @@
 
     <build>
         <plugins>
-
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<source>1.8</source>-->
-                    <!--<target>1.8</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -196,7 +187,6 @@
                     <sourceType>json</sourceType>
                     <sourceDirectory>${basedir}/src/main/resources/json-schema</sourceDirectory>
                     <targetPackage>com.groupon.generated</targetPackage>
-                    <!--<outputDirectory>${basedir}/src/main/java</outputDirectory>-->
                     <outputDirectory>${basedir}/target/generated-sources/xjc</outputDirectory>
                 </configuration>
                 <executions>
@@ -216,6 +206,12 @@
                     <!--<rulesets>-->
                     <!--<ruleset>example_pmd.xml</ruleset>-->
                     <!--</rulesets>-->
+                    <!--<excludes>-->
+                        <!--<exclude>**/generated/*</exclude>-->
+                    <!--</excludes>-->
+                    <excludeRoots>
+                        <excludeRoot>target/generated-sources</excludeRoot>
+                    </excludeRoots>
                 </configuration>
                 <executions>
                     <execution>
@@ -251,28 +247,28 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>cobertura-maven-plugin</artifactId>-->
-                <!--<version>2.7</version>-->
-                <!--<configuration>-->
-                    <!--<check>-->
-                        <!--<haltOnFailure>true</haltOnFailure>-->
-                        <!--&lt;!&ndash;<branchRate>95</branchRate>&ndash;&gt;-->
-                        <!--<lineRate>5</lineRate>-->
-                        <!--&lt;!&ndash;<totalBranchRate>5</totalBranchRate>&ndash;&gt;-->
-                        <!--<totalLineRate>5</totalLineRate>-->
-                    <!--</check>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>clean</goal>-->
-                            <!--<goal>check</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <check>
+                        <haltOnFailure>true</haltOnFailure>
+                        <!--<branchRate>95</branchRate>-->
+                        <lineRate>0</lineRate>
+                        <!--<totalBranchRate>5</totalBranchRate>-->
+                        <totalLineRate>0</totalLineRate>
+                    </check>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>clean</goal>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
