@@ -1,7 +1,7 @@
 package com.services.micro.gateway.resource;
 
-import com.groupon.generated.request.ReservationRequest;
-import com.groupon.generated.response.ReservationResponse;
+import com.groupon.generated.request.GrouponRequest;
+import com.groupon.generated.response.GrouponResponse;
 import com.services.micro.commons.logging.annotation.LogExecutionTime;
 import com.services.micro.gateway.order.GrouponOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +24,11 @@ public class GrouponResource {
         this.grouponOrderService = grouponOrderService;
     }
 
-    @PostMapping(value = "/reserve", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/reserve",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @LogExecutionTime
-    public ReservationResponse reserve(@RequestBody ReservationRequest reservationRequest) throws Exception {
+    public GrouponResponse reserve(@RequestBody GrouponRequest reservationRequest) throws Exception {
         return grouponOrderService.reserve(reservationRequest);
     }
 

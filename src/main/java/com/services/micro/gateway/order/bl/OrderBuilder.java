@@ -8,7 +8,7 @@ import com.ftd.pi.ic.ftdpartners.webservices.BillingPhoneNumber;
 import com.ftd.pi.ic.ftdpartners.webservices.FulFillmentAddress;
 import com.ftd.pi.ic.ftdpartners.webservices.FulFillmentPhoneNumber;
 import com.groupon.generated.request.Datum;
-import com.groupon.generated.request.ReservationRequest;
+import com.groupon.generated.request.GrouponRequest;
 import org.springframework.stereotype.Component;
 
 import javax.xml.bind.JAXBElement;
@@ -21,7 +21,7 @@ import java.util.List;
 
 @Component
 public class OrderBuilder {
-    public Object build(ReservationRequest reservationRequest) throws DatatypeConfigurationException {
+    public Object build(GrouponRequest reservationRequest) throws DatatypeConfigurationException {
         ObjectFactory factory = new ObjectFactory();
         SubmitOrderFeed submitOrderFeed = new SubmitOrderFeed();
         JAXBElement<SubmitOrderFeed> submitOrderFeedJAXBElement = factory.createSubmitOrderFeed(submitOrderFeed);

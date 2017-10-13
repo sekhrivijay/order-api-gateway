@@ -1,0 +1,54 @@
+{
+   "data": [
+      {
+         "productId": "00000000-0000-00ff-ffff-ffffffffffff",
+         "quantity": 1,
+         "priceSummary": {
+            "currencyCode": "EUR",
+            "price": {
+               "amount": 300
+            }
+         },
+         "attributes": {
+            "startAt": "2015-12-01T06:59:59Z",
+            "endAt": "2015-12-01T13:59:59Z"
+         },
+         "reservedUnits": [
+            {
+               "id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+               "grouponCustomerServiceId": "ffffffff-ffff-ffff-ffff-ffffffffffff"
+            }
+         ]
+      },
+      {
+         "productId": "00000000-0000-0000-0000-000000000000",
+         "quantity": 2,
+         "priceSummary": {
+            "currencyCode": "EUR",
+            "price": {
+               "amount": 300
+            }
+         },
+         "purchaserDetails": [
+            {
+               "firstName": "John",
+               "lastName": "Doe",
+               "meetsMinimumAgeRestriction": 21,
+               "shippingAddress": {
+                  "streetAddress": "123 Fake Street",
+                  "extendedAddress": "Suite 620",
+                  "locality": "Chicago",
+                  "region": "Illinois",
+                  "postalCode": 60654,
+                  "countryCode": "US"
+               }
+            },
+            {
+               "firstName": "Jane",
+               "lastName": "Doe"
+            }
+         ],
+         "reservedUnits": []
+      }
+   ]
+}

@@ -1,8 +1,8 @@
 package com.services.micro.gateway.order;
 
-import com.groupon.generated.request.ReservationRequest;
-import com.groupon.generated.response.ReservationResponse;
+import com.groupon.generated.request.GrouponRequest;
+import com.groupon.generated.response.GrouponResponse;
 
 public interface GrouponOrderService {
-    ReservationResponse reserve(ReservationRequest reservationRequest) throws Exception;
+    GrouponResponse reserve(GrouponRequest reservationRequest) throws Exception;
 }

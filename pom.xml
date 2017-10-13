@@ -112,6 +112,16 @@
             <version>1.0.0</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>commons-lang</groupId>-->
+            <!--<artifactId>commons-lang</artifactId>-->
+            <!--<version>2.4</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--<artifactId>jackson-databind</artifactId>-->
+            <!--<version>2.5.4</version>-->
+        <!--</dependency>-->
 
 
         <dependency>
@@ -135,6 +145,15 @@
 
     <build>
         <plugins>
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -164,54 +183,74 @@
                     <xmlschema>false</xmlschema>
                     <generatePackage>com.ftd.pi.ic.ftdpartners.webservices</generatePackage>
                     <schemaIncludes>
-                        <include>apollo.wsdl</include>
+                        <include>xml-schema/apollo.wsdl</include>
                     </schemaIncludes>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-pmd-plugin</artifactId>-->
-                <!--<version>3.8</version>-->
-                <!--<configuration>-->
-                    <!--<printFailingErrors>true</printFailingErrors>-->
-                    <!--&lt;!&ndash;<rulesets>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<ruleset>example_pmd.xml</ruleset>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</rulesets>&ndash;&gt;-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>check</goal>-->
-                            <!--<goal>cpd-check</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-                <!--<version>2.17</version>-->
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <version>0.5.1</version>
+                <configuration>
+                    <generateBuilders>true</generateBuilders>
+                    <sourceType>json</sourceType>
+                    <sourceDirectory>${basedir}/src/main/resources/json-schema</sourceDirectory>
+                    <targetPackage>com.groupon.generated</targetPackage>
+                    <!--<outputDirectory>${basedir}/src/main/java</outputDirectory>-->
+                    <outputDirectory>${basedir}/target/generated-sources/xjc</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.8</version>
+                <configuration>
+                    <printFailingErrors>true</printFailingErrors>
+                    <!--<rulesets>-->
+                    <!--<ruleset>example_pmd.xml</ruleset>-->
+                    <!--</rulesets>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>cpd-check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.17</version>
 
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>check</id>-->
-                        <!--<phase>validate</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>check</goal>-->
-                            <!--&lt;!&ndash;<goal>checkstyle</goal>&ndash;&gt;-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<configLocation>${basedir}/checkstyle.xml</configLocation>-->
-                            <!--<encoding>UTF-8</encoding>-->
-                            <!--<consoleOutput>true</consoleOutput>-->
-                            <!--<failsOnError>true</failsOnError>-->
-                            <!--<failOnViolation>true</failOnViolation>-->
+                <executions>
+                    <execution>
+                        <id>check</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <!--<goal>checkstyle</goal>-->
+                        </goals>
+                        <configuration>
+                            <configLocation>${basedir}/checkstyle.xml</configLocation>
+                            <encoding>UTF-8</encoding>
+                            <consoleOutput>true</consoleOutput>
+                            <failsOnError>true</failsOnError>
+                            <failOnViolation>true</failOnViolation>
 
-                            <!--<includeTestSourceDirectory>true</includeTestSourceDirectory>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <!--<plugin>-->
                 <!--<groupId>org.codehaus.mojo</groupId>-->
                 <!--<artifactId>cobertura-maven-plugin</artifactId>-->

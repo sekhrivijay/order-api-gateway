@@ -1,0 +1,77 @@
+{
+  "data":{
+    "id":"ffff0000-ffff-0000-ffff-0000ffff0000",
+    "status":"reserved",
+    "createdAt":"2015-12-01T01:00:00Z",
+    "updatedAt":"2015-12-01T23:59:59Z",
+    "products":[
+      {
+        "id":"00000000-0000-00ff-ffff-ffffffffffff",
+        "quantity":1,
+        "priceSummary":{
+          "currencyCode":"EUR",
+          "price":{
+            "amount":300
+          }
+        },
+        "reservedUnits":[
+          {
+            "id":"ffffffff-ffff-ffff-ffff-ffffffffffff",
+            "fulfillmentType":"electronic",
+            "expiresAt":"2015-11-01T17:00",
+            "isRedeemed":false,
+            "details":{
+              "serviceTitle":"Men's Haircut",
+              "startAt":"2015-11-01T16:00",
+              "endAt":"2015-11-01T17:00",
+              "resourceName":"Anna Rosendahl"
+            }
+          }
+        ]
+      },
+      {
+        "id":"ffffffff-ffff-ff00-0000-000000000000",
+        "quantity":2,
+        "priceSummary":{
+          "currencyCode":"EUR",
+          "price":{
+            "amount":300
+          }
+        },
+        "reservedUnits":[
+          {
+            "id":"00000000-0000-0000-0000-000000000000",
+            "fulfillmentType":"electronic",
+            "isRedeemed":false,
+            "purchaserDetails":[
+              {
+                "firstName":"John",
+                "lastName":"Doe",
+                "shippingAddress":{
+                  "streetAddress":"123 Fake Street",
+                  "extendedAddress":"Suite 620",
+                  "locality":"Chicago",
+                  "region":"Illinois",
+                  "postalCode":60654,
+                  "countryCode":"US"
+                }
+              }
+            ]
+          },
+          {
+            "id":"11111111-1111-1111-1111-111111111111",
+            "fulfillmentType":"electronic",
+            "isRedeemed":true,
+            "redeemedAt":" 2015-12-01T01:00Z",
+            "purchaserDetails":[
+              {
+                "firstName":"Jane",
+                "lastName":"Doe"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

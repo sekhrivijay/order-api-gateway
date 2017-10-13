@@ -1,9 +1,9 @@
 package com.services.micro.gateway.order.impl;
 
-import com.groupon.generated.request.ReservationRequest;
+import com.groupon.generated.request.GrouponRequest;
 import com.groupon.generated.response.Data;
+import com.groupon.generated.response.GrouponResponse;
 import com.groupon.generated.response.Product;
-import com.groupon.generated.response.ReservationResponse;
 import com.services.micro.gateway.order.GrouponOrderService;
 import com.services.micro.gateway.order.bl.OrderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,8 @@ public class GrouponOrderServiceImpl implements GrouponOrderService {
 
 
     @Override
-    public ReservationResponse reserve(ReservationRequest reservationRequest) throws Exception {
-        ReservationResponse reservationResponse = new ReservationResponse();
+    public GrouponResponse reserve(GrouponRequest reservationRequest) throws Exception {
+        GrouponResponse reservationResponse = new GrouponResponse();
         orderSoapClient.call(orderBuilder.build(reservationRequest));
         //Copy data from request onto response
         Data data = new Data();
