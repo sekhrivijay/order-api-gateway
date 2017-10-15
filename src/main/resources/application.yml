@@ -48,8 +48,8 @@ client:
     trust-store-password: client-truststore-p455w0rd
   auth:
     header:
-      user-name: provide_test
-      password: provide_test
+      user-name: XXX
+      password: XXX
 
 
 logging:
