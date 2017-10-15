@@ -21,6 +21,7 @@ public class GrouponOrderApiFilter extends ZuulFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger(GrouponOrderApiFilter.class);
 
     private GrouponOrderService grouponOrderService;
+    private Gson gson = new Gson();
 
     @Autowired
     public void setGrouponOrderService(GrouponOrderService grouponOrderService) {
@@ -44,18 +45,14 @@ public class GrouponOrderApiFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        RequestContext ctx = getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
+        RequestContext context = getCurrentContext();
+        HttpServletRequest request = context.getRequest();
         LOGGER.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
         try {
 
             BufferedReader reader = request.getReader();
-
-            Gson gson = new Gson();
-
             GrouponRequest reservationRequest = gson.fromJson(reader, GrouponRequest.class);
-            RequestContext context = getCurrentContext();
             HttpServletResponse servletResponse = context.getResponse();
             servletResponse.addHeader("Content-Type", "application/json; charset=utf-8");
             context.setResponseBody(gson.toJson(grouponOrderService.reserve(reservationRequest)));

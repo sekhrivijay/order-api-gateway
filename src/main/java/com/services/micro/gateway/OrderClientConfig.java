@@ -10,7 +10,6 @@ import org.springframework.ws.soap.security.support.KeyStoreFactoryBean;
 import org.springframework.ws.soap.security.support.TrustManagersFactoryBean;
 import org.springframework.ws.transport.http.HttpsUrlConnectionMessageSender;
 
-import javax.net.ssl.HostnameVerifier;
 
 @Configuration
 public class OrderClientConfig {
@@ -51,12 +50,7 @@ public class OrderClientConfig {
         HttpsUrlConnectionMessageSender httpsUrlConnectionMessageSender =
                 new HttpsUrlConnectionMessageSender();
         httpsUrlConnectionMessageSender.setTrustManagers(trustManagersFactoryBean().getObject());
-        httpsUrlConnectionMessageSender.setHostnameVerifier(new HostnameVerifier() {
-            @Override
-            public boolean verify(String hostname, javax.net.ssl.SSLSession sslSession) {
-                return LOCALHOST.equals(hostname);
-            }
-        });
+        httpsUrlConnectionMessageSender.setHostnameVerifier((hostname, sslSession) -> LOCALHOST.equals(hostname));
 
         return httpsUrlConnectionMessageSender;
     }

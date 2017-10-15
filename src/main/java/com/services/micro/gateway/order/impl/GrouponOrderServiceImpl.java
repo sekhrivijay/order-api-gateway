@@ -1,5 +1,6 @@
 package com.services.micro.gateway.order.impl;
 
+import com.codahale.metrics.annotation.Timed;
 import com.groupon.generated.request.GrouponRequest;
 import com.groupon.generated.response.Data;
 import com.groupon.generated.response.GrouponResponse;
@@ -26,6 +27,7 @@ public class GrouponOrderServiceImpl implements GrouponOrderService {
 
 
     @Override
+    @Timed
     public GrouponResponse reserve(GrouponRequest reservationRequest) throws Exception {
         GrouponResponse reservationResponse = new GrouponResponse();
         orderSoapClient.call(orderBuilder.build(reservationRequest));

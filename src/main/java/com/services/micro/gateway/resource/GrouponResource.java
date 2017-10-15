@@ -1,5 +1,7 @@
 package com.services.micro.gateway.resource;
 
+import com.codahale.metrics.annotation.ExceptionMetered;
+import com.codahale.metrics.annotation.Timed;
 import com.groupon.generated.request.GrouponRequest;
 import com.groupon.generated.response.GrouponResponse;
 import com.services.micro.commons.logging.annotation.LogExecutionTime;
@@ -28,6 +30,8 @@ public class GrouponResource {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @LogExecutionTime
+    @Timed
+    @ExceptionMetered
     public GrouponResponse reserve(@RequestBody GrouponRequest reservationRequest) throws Exception {
         return grouponOrderService.reserve(reservationRequest);
     }
